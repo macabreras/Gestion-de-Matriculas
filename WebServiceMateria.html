@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="angular/angular.min.js"></script>
+  <script src="angular/angular-resource.js"></script>
+    <script src="js/WebServiceMateria.js"></script>
+    <meta charset="UTF-8">
+</head>
+<body ng-app="app">
+<div ng-controller="controlador">
+<div class="container">
+<div class="well well-lg">
+    <center><h3><strong>Gestion de Matriculación con AngularJS</strong></h3>
+</div><br>
+    <form ng-show="formulario" ng-submit="Validar()">
+    <strong>Cédula a ingresar: </strong><input name="cedula" placeholder="Ingrese su cedula ..." type="Text" ng-model="cedula">
+    <input class="btn btn-info" type="submit" value="Buscar">
+    </form>
+<div ng-show="msg"><center><h3 class="alert alert-info">{{mensaje}}</h3></center></div>
+<div ng-show="materia">
+<div><center><h3 class="alert alert-success">Cursos Disponibles</h3></center></div> <br>
+<table class="table table-striped">
+    <tr>
+    <td><strong>Nombre</strong></td>
+    <td><strong>Cupos Disponibles</strong></td>
+    <td></td>
+    </tr>
+    <tr ng-repeat="c in listamateria">
+        <td>{{c.nombre}}</td>
+        <td>{{c.cupo}}</td>
+        <td><button class="btn btn-info" ng-click="matriculado()"><strong>Matricúlate Aquí</strong></button></td>
+    </tr>
+</table>
+</div><br><br>
+<div class="well well-lg">
+        <p class="text-center"> 
+            Derechos Reservados
+            </br>   
+            <strong>****Miguel.A.Cabrera.S****</strong>
+            </br>
+            <strong>5TO Ciclo "A"</strong> 
+            </br>
+            Julio-2016        
+        </p>
+    </div>
+</div>
+    
+</div>
+</body>
+</html>

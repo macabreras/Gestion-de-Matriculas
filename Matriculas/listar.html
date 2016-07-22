@@ -1,0 +1,68 @@
+{% extends 'Matriculas/master.html' %}
+	{% block contenido %}
+		{% if estudiante %}
+		<div class="container">
+		<center> <H3 class="alert alert-warning">Listado de Estudiantes</H3></center>
+		
+		<table class="table table-striped">
+		<tr class="info">
+			<td><label>Cedula</label></td>
+			<td><label>Nombres</label></td>
+			<td><label>Apellidos</label></td>
+			<td><label>Editar/Eliminar</label></td>
+			<td></td>
+			
+		</tr>
+
+		{% for c in estudiante %}
+		<tr class="success">
+			<td>{{c.cedula}}</td>
+			<td>{{c.nombre}}</td>
+			<td>{{c.apellido}}</td>
+			<td><a class="glyphicon glyphicon-pencil" title="Modificar" href="ModificarEstudiante?cedula={{c.cedula}}"></a> 
+			| <a class="glyphicon glyphicon-trash" href="EliminarEstudiante?cedula={{c.cedula}}" title="Eliminar"></a></td>
+			
+		</tr>
+		{% endfor %}
+		</table>
+		{% else %}
+		
+
+		<div class="alert alert-danger"><center>No exisisten estudiantes registrados en el sistema</center></div>
+		{% endif %}
+		<br>
+		<a href="NuevoEstudiante"><center><button class="btn btn-success" title="Agregar Estudiante" >Nuevo Estudiante</button></center></a><br>
+
+		
+
+		{% if materia %}
+		<center> <H3 class="alert alert-warning">Materias Registradas</H3></center>
+		
+		<table class="table table-striped">
+		<tr class="info">
+			
+			<td><label>Nombres</label></td>
+			<td><label>Cupos</label></td>
+			<td><label>Editar/Eliminar</label></td>
+			<td></td>
+			
+		</tr>
+
+		{% for c in materia %}
+		<tr class="success">
+			
+			<td>{{c.nombre}}</td>
+			<td>{{c.cupo}}</td>
+			<td><a class="glyphicon glyphicon-pencil" href="ModificarMateria?nombre={{c.nombre}}" title="Modificar"></a> | <a class="glyphicon glyphicon-trash" href="EliminarMateria?nombre={{c.nombre}}" title="Eliminar"></a></td>	
+		</tr>
+		{% endfor %}
+		</table>
+		{% else %}		
+
+		<div class="alert alert-danger"><center>Esta materia no se encuentra registrada, pruebe de nuevo</center></div>
+		{% endif %}
+
+<br>
+<a href="NuevaMateria"><center><button class="btn btn-success" title="Agregar Materia" >Nueva Materia</button></center></a><br><br>
+</div>
+	{% endblock contenido %}
